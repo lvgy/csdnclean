@@ -1,0 +1,28 @@
+* {
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100px;
+}
+
+ul, li {
+    width: 100%;
+}
+
+li {
+    list-style: none;
+    text-align: center;
+    padding: 5px 0;
+}
+
+li:hover {
+    background-color: #eee;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
