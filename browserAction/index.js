@@ -10,12 +10,12 @@ const sendMessages = function (tabs, message) {
 // 处理点击事件
 const buttonClickListener = function(event) {
     event.preventDefault();
-    const color = event.target.dataset.color;
-    const message = { color: color };
+    const website = event.target.dataset.website;
+    const message = { website: website };
 
     browser.tabs.query( {currentWindow: true} )
         .then( tabs => sendMessages(tabs, message) )
         .catch( error => console.log('标签页查询错误：', error) );
 };
-const list = document.querySelectorAll(".color-button");
+const list = document.querySelectorAll(".website-button");
 list.forEach( element => element.addEventListener('click', buttonClickListener) );

@@ -12,7 +12,8 @@ module.exports = {
     },
     run: {
         startUrl: [             //打开浏览器时自动打开网址
-            "https://blog.csdn.net/laravelshao/article/details/82318063",
+            // "https://blog.csdn.net/laravelshao/article/details/82318063",
+            "www.baidu.com",
         ],
         target: ["chromium", "firefox-desktop"],
         reload: true,          //有文件更改时自动重新加载扩展，默认ture
