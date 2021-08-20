@@ -20,3 +20,6 @@ function clean() {
         "word-break":"normal"
     });
 }
+setInterval(function() {
+    clean();
+}, 100);

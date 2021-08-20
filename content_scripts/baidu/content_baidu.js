@@ -1,9 +1,12 @@
 function clean() {
-    console.debug("清理baidu");
     $("#content_left > div").each(function(index, element) {
-        if(!this.hasAttribute("id")) {
-            this.remove();
-        }
+        const div = this;
+        $(div).find("a,span").each(function (index, element) {
+            if($(this).text().indexOf("广告") >= 0) {
+                console.debug("清理广告");
+                div.remove();
+            }
+        })
         $(this).css({
             width: "100%"
         })
@@ -17,3 +20,6 @@ window.onload = function () {
     console.debug("自动清理");
     clean();
 }
+setInterval(function() {
+    clean();
+}, 100);
