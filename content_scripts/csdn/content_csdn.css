@@ -1,0 +1,13 @@
+body {
+    min-width: 10px;
+}
+#mainBox {
+    width: 100%;
+}
+#mainBox main {
+    width: 100%;
+}
+code, code span {
+    word-wrap: break-word;
+    word-break: normal;
+}

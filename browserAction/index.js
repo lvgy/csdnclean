@@ -1,21 +1,26 @@
-// 向所有标签发送消息
-const sendMessages = function (tabs, message) {
-    tabs.forEach(tab => {
-        browser.tabs.sendMessage( tab.id, message ).then(response => {
-            console.log("来自content_script的消息:", response.response);
-        }).catch(function(error) {});
-    });
+// 向当前标签发送消息
+function sendMessages(tab, message) {
+    browser.tabs.sendMessage( tab[0].id, message )
+        .then(response => {
+            console.debug("来自content_script的消息:", response.response);
+        })
+        .catch(function(error) {});
+}
+function sengMessageToCurrentTab(message) {
+    const parameters = {
+        active: true,
+        currentWindow: true
+    };
+    browser.tabs.query( parameters )
+        .then( tabs => sendMessages(tabs, message) )
+        .catch( error => console.debug('标签页查询错误：', error) );
 }
 
 // 处理点击事件
 const buttonClickListener = function(event) {
-    event.preventDefault();
-    const website = event.target.dataset.website;
-    const message = { website: website };
+    sengMessageToCurrentTab({
+        website: event.target.dataset.website
+    });
 
-    browser.tabs.query( {currentWindow: true} )
-        .then( tabs => sendMessages(tabs, message) )
-        .catch( error => console.log('标签页查询错误：', error) );
 };
-const list = document.querySelectorAll(".website-button");
-list.forEach( element => element.addEventListener('click', buttonClickListener) );
+document.querySelectorAll(".website-button").forEach( element => element.addEventListener('click', buttonClickListener) );

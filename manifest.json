@@ -1,20 +1,35 @@
 {
 	"manifest_version": 2,
-	"version": "0.0.2",
-	"name": "csdnclean",
-	"description": "理清csd网页",
+	"version": "0.0.4",
+	"name": "webcleaner",
+	"description": "理清网页",
 	"icons": {
-		"64": "icons/icon.png"
+		"48": "icons/icon.png"
 	},
 	"content_scripts": [
 		{
 			"matches": [
-				"*://blog.csdn.net/*",
+				"*://*/*"
+			],
+			"js": [
+				"content_scripts/content_common.js",
+				"lib/jquery-3.6.0.min.js"
+			]
+		},
+		{
+			"matches": [
 				"*://www.baidu.com/*"
 			],
 			"js": [
-				"content_scripts/content_script.js",
-				"lib/jquery-3.6.0.min.js"
+				"content_scripts/baidu/content_baidu.js"
+			]
+		},
+		{
+			"matches": [
+				"*://blog.csdn.net/*"
+			],
+			"js": [
+				"content_scripts/csdn/content_csdn.js"
 			]
 		}
 	],
@@ -24,5 +39,16 @@
 		},
 		"default_title": "清理网页",
 		"default_popup": "browserAction/index.html"
+	},
+	"permissions": [
+		"webRequest",
+		"<all_urls>",
+		"activeTab",
+		"contextMenus"
+	],
+	"background": {
+		"scripts": [
+			"background/background.js"
+		]
 	}
 }
