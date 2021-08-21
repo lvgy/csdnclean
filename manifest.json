@@ -42,12 +42,18 @@
 			]
 		}
 	],
-	"browser_action": {
+	"page_action": {
+		"browser_style": true,
 		"default_icon": {
 			"48": "icons/icon.png"
 		},
 		"default_title": "清理网页",
-		"default_popup": "browserAction/index.html"
+		"show_matches": [
+			"*://blog.csdn.net/*",
+			"*://www.baidu.com/*",
+			"*://www.xl720.com/*",
+			"*://www.btdx8.com/*"
+		]
 	},
 	"permissions": [
 		"webRequest",

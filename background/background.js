@@ -49,3 +49,10 @@ browser.contextMenus.onClicked.addListener((info, tab) => {
     }
     sendMessageToCurrentTab(message)
 });
+
+// 监听地址栏按钮点击事件
+browser.pageAction.onClicked.addListener(function (message) {
+    sendMessageToCurrentTab({
+        pageAction: true
+    })
+});
